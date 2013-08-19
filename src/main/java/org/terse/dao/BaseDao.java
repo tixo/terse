@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface BaseDao {
 
-	
 	public <T> void save(List<T> l)throws SQLException;
 	
 	public void delete(List<Object> l)throws SQLException;
