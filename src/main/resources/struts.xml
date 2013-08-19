@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="system" extends="xlRedirect-default" namespace="/">
+		<interceptors>
+			<!-- <interceptor name="exceptionInterceptor" class="com.xinlong.framework.interceptor.ExceptionInterceptor" /> -->
+			<interceptor name="freemarkerTagInterceptor" class="com.xinlong.framework.interceptor.FreemarkerTagInterceptor" />
+			<interceptor name="validatorInterceptor" class="com.xinlong.framework.validator.ValidatorInterceptor" />
+			<interceptor-stack name="baseStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="validatorInterceptor"/>
+				<!-- <interceptor-ref name="exceptionInterceptor"/> -->
+				<interceptor-ref name="freemarkerTagInterceptor"/>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="baseStack" />
+		<global-results>
+			<result name="XLResult" type="XLResult" />
+			<result name="INPUT_ERROR" >/input_error.ftl</result>
+		</global-results>
+	</package>
+</struts>
