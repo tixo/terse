@@ -19,7 +19,7 @@ public class StreamResultExecute extends Result implements ResultExecute{
 	
 	private String newName;
 	
-	private String result = TERSE_RESULT;
+	private String result = T_RESULT;
 	
 	protected StreamResultExecute(ByteArrayOutputStream outStream,String newName){
 		this.outStream = outStream;

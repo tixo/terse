@@ -3,11 +3,11 @@
       "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
       "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="system" extends="xlRedirect-default" namespace="/">
+	<package name="system" extends="terseRedirect-default" namespace="/">
 		<interceptors>
 			<!-- <interceptor name="exceptionInterceptor" class="com.xinlong.framework.interceptor.ExceptionInterceptor" /> -->
-			<interceptor name="freemarkerTagInterceptor" class="com.xinlong.framework.interceptor.FreemarkerTagInterceptor" />
-			<interceptor name="validatorInterceptor" class="com.xinlong.framework.validator.ValidatorInterceptor" />
+			<interceptor name="freemarkerTagInterceptor" class="org.terse.interceptor.FreemarkerTagInterceptor" />
+			<interceptor name="validatorInterceptor" class="org.terse.validator.ValidatorInterceptor" />
 			<interceptor-stack name="baseStack">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="validatorInterceptor"/>
@@ -17,7 +17,7 @@
 		</interceptors>
 		<default-interceptor-ref name="baseStack" />
 		<global-results>
-			<result name="XLResult" type="XLResult" />
+			<result name="TResult" type="TResult" />
 			<result name="INPUT_ERROR" >/input_error.ftl</result>
 		</global-results>
 	</package>

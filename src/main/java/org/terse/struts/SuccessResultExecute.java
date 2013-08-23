@@ -40,7 +40,7 @@ public class SuccessResultExecute extends Result implements ResultExecute{
 		if(null == client || "".equals(client)) {
 			return SUCCESS;
 		} else {
-			return TERSE_RESULT;
+			return T_RESULT;
 		}
 	}
 	
