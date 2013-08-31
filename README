@@ -1,2 +1,67 @@
-terse 基于spring,hibernate,struts2开发。terse的目标是:用简洁的代码完成复杂的功能。
-详情请参见terse-sample
+terse是一个高效的java web 开发框架。
+terse 基于spring,hibernate,struts2开发。
+terse的目标是:用简洁的代码完成复杂的功能。
+
+
+功能概要：
+1.action匹配：index.shtml ====> IndexAction
+              index_one.shtml =====> IndexOneAction
+              index_one_two_three_four.shtml =====> IndexOneTwoThreeFourAction
+              
+2.传值: 采用和struts2相同方式
+
+3.数据库操作：
+  /**
+   *
+   *数据库操作概览
+   *
+   */
+  public class SampleService extends BaseService implements ISampleService {
+  
+  /**保存*/
+	@Override
+	public void save(Sample sample) throws Exception {
+		baseDao.save(sample);
+	}
+  /**更新*/
+	@Override
+	public void update(Sample sample) throws Exception {
+		baseDao.update(sample);
+	}
+  /**删除*/
+	@Override
+	public void delete(Sample sample) throws Exception {
+		baseDao.delete(sample);
+	}
+  /**根据Id查询*/
+	@Override
+	public Sample getById(String id) throws Exception {
+		return baseDao.get(Sample.class, id);
+	}
+  /**查询全部*/
+	@Override
+	public List<Sample> getAllSample(String otherId) throws Exception {
+		String hql = "from Sample s where s.otherId = ?";
+		return baseDao.findEntity(hql,otherId,Sample.class);
+	}
+  /**分页查询*/
+	@Override
+	public Page getSampleByPage(String otherId,int currentPage) throws Exception {
+		String hql = "from Sample s where s.otherId=?";
+		return baseDao.search(hql,new String[]{companyId},PAGESIZE,currentPage);
+	}
+
+	
+  /**根据多个条件进行分页查询*/
+	@Override
+	public Page getByCondition(String condition1, String condition2,int currentPage,String Condition3)
+			throws Exception {
+		String hql = "from Sample s where s.col1 = ? and s.col2 = ? and s.col3 = ?";
+		return baseDao.search(hql,new String[]{condition1,condition2,Condition3},PAGESIZE,currentPage);
+	}
+
+}
+
+4.更多？ 互粉
+
+
