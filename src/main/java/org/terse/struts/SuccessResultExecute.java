@@ -18,9 +18,6 @@ public class SuccessResultExecute extends Result implements ResultExecute{
 	@Override
 	public void doResultExecute(TResult tResult,ActionInvocation invocation) {
 		try {
-			//String ftl="/WEB-INF/classes/"+ReflectUtil.namespaceToMobileFtl(invocation.getAction().getClass().getName());
-			//TODO 此处待测试����
-			//��namespaceToMobileFtl������namespaceToAllPath
 			String ftl="/WEB-INF/classes/"+ReflectUtil.namespaceToAllPath(invocation.getAction().getClass().getName());
 			FreemarkerResult fr=new FreemarkerResult();
 			fr.setFreemarkerManager(tResult.getFreemarkerManager());
@@ -34,14 +31,7 @@ public class SuccessResultExecute extends Result implements ResultExecute{
 
 	@Override
 	public String getResult() {
-		//TODO 此处待测试�����
-		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(StrutsStatics.HTTP_REQUEST);
-		String client = request.getParameter("xinlong_client");
-		if(null == client || "".equals(client)) {
-			return SUCCESS;
-		} else {
-			return T_RESULT;
-		}
+		return SUCCESS;
 	}
 	
 }

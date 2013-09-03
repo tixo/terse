@@ -2,7 +2,7 @@ package org.terse.struts;
 
 public abstract class Result{
 
-	public static final String T_RESULT = "T_RESULT";
+	public static final String T_RESULT = "TResult";
 	
 	public static final String SUCCESS = "SUCCESS";
 
