@@ -7,12 +7,11 @@ terse的目标是:用简洁的代码完成复杂的功能。
 1.action匹配：假设action扩展名为shtml，不用xml配置action映射，采用规约来映射。
               如下:
 	      localhost:8080/samples/index.shtml ====> IndexAction的get方法，get方法如下
-	      <pre>
-	      @Override
-	public Result doGet() throws Exception {
-		return success();
-	}
-	      </pre>
+	    
+		public Result doGet() throws Exception {
+			return success();
+		}
+	      
               get方法返回success的result，terse会在当前目录寻找index.ftl进行渲染
               如果get方法返回 return forward("../hello.ftl")，terse会在父目录下寻找hello.ftl进行渲染
               如果get方法返回 return redirect("hello.shtml"),terse会寻找HelloAction，然后根据HelloAction的result类型，在进行渲染。
