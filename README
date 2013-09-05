@@ -4,11 +4,36 @@ terse的目标是:用简洁的代码完成复杂的功能。
 
 
 功能概要：
-1.action匹配：index.shtml ====> IndexAction
+1.action匹配：不用xml配置action映射，采用规约来映射。如下:
+	      index.shtml ====> IndexAction
               index_one.shtml =====> IndexOneAction
               index_one_two_three_four.shtml =====> IndexOneTwoThreeFourAction
               
-2.传值: 采用和struts2相同方式
+              
+2.传值: public class FindPostsAction extends BaseAction {
+	/*
+	 *如此就可以将页面传过来的名为id的参数值接受过来了。
+	 *记住要有getter和setter方法。
+	 * 
+	 */
+	private String id;
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	@Override
+	public Result doGet() throws Exception {
+		return success();
+	}
+
+	@Override
+	public Result doPost() throws Exception {
+		return doGet();
+	}
+}
 
 3.数据库操作：
   /**
